@@ -1,4 +1,13 @@
-# ignores following folders
+# Visual Studio
+.vs/
 bin/
-build/
+obj/
+
+# CMake / build
 out/
+build/
+
+# Windows
+*.user
+*.suo
+*.log
