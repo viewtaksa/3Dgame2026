@@ -192,10 +192,10 @@ configure_file(configuration/root_directory.h.in configuration/root_directory.h)
 include_directories(${CMAKE_BINARY_DIR}/configuration)
 
 # first create relevant static libraries required for other projects
-add_library(STB_IMAGE "src/stb_image.cpp")
+add_library(STB_IMAGE "src/stb_image.cpp" "src/8.guest/2020/skeletal_animation/skeletal_animation.cpp")
 set(LIBS ${LIBS} STB_IMAGE)
 
-add_library(GLAD "src/glad.c")
+add_library(GLAD "src/glad.c" "src/8.guest/2020/skeletal_animation/skeletal_animation.cpp")
 set(LIBS ${LIBS} GLAD)
 
 macro(makeLink src dest target)
@@ -220,7 +220,7 @@ function(create_project_from_sources chapter demo)
 	else()
 		set(NAME "${chapter}__${demo}")
 	endif()
-    add_executable(${NAME} ${SOURCE})
+    add_executable(${NAME} ${SOURCE} "src/8.guest/2020/skeletal_animation/skeletal_animation.cpp")
     target_link_libraries(${NAME} ${LIBS})
     if(MSVC)
 		target_compile_options(${NAME} PRIVATE /std:c++17 /MP)
